@@ -1,2 +1,2 @@
-# mu-cpp
-C++ interface to structured singular value (mu) computation
+# Structured Singular Value ($`\mu`$) calculation
+Interface to structured singular value (mu) computation
