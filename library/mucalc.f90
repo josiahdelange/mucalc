@@ -6,7 +6,7 @@ contains
         &   iwork, dwork, ldwork, zwork, lzwork, info) bind(C, name="slicot_ab13md_")
         use, intrinsic :: iso_c_binding
 
-        character(len=1), intent(in) :: fact
+        character(c_char), intent(in) :: fact
         integer(c_int), intent(in) :: n
         complex(c_double_complex), intent(in) :: z(ldz, *)
         integer(c_int), intent(in) :: ldz

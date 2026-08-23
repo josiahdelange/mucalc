@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 project(mucalc)
 
 # Version number
-set(CPACK_PACKAGE_VERSION_MAJOR 1)
-set(CPACK_PACKAGE_VERSION_MINOR 0)
-set(CPACK_PACKAGE_VERSION_PATCH 0)
+set(CPACK_VERSION_MAJOR 1)
+set(CPACK_VERSION_MINOR 0)
+set(CPACK_VERSION_PATCH 0)
 
 # Git version
 find_package(Git QUIET)
