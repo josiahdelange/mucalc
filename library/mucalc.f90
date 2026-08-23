@@ -3,10 +3,10 @@ module mucalc
 
 contains
     subroutine slicot_ab13md(fact, n, z, ldz, m, nblock, itype, x, bound, d, g, &
-        &   iwork, dwork, ldwork, zwork, lzwork, info)
+        &   iwork, dwork, ldwork, zwork, lzwork, info) bind(C, name="slicot_ab13md_")
         use, intrinsic :: iso_c_binding
 
-        character(len=*), intent(in) :: fact
+        character(len=1), intent(in) :: fact
         integer(c_int), intent(in) :: n
         complex(c_double_complex), intent(in) :: z(ldz, *)
         integer(c_int), intent(in) :: ldz
@@ -25,8 +25,7 @@ contains
         integer(c_int), intent(out) :: info
 
         ! Call SLICOT subroutine from Fortran-90 module
-        !
-        !TODO
-        !
+        call AB13MD(fact, n, z, ldz, m, nblock, itype, x, bound, d, g, &
+        &   iwork, dwork, ldwork, zwork, lzwork, info)
     end subroutine slicot_ab13md
 end module mucalc
