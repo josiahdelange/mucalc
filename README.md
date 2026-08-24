@@ -15,7 +15,7 @@ ctest
 ```
 mkdir build
 cd build
-cmake -Tfortran=ifx -DSLICOT_DIR=<PATH_TO_SLICOT>/build/install/lib/cmake/SLICOT -DCMAKE_BUILD_TYPE=Release ..
+cmake -Tfortran=ifx -DSLICOT_DIR=<PATH_TO_SLICOT>\build\install\lib\cmake\SLICOT ..
 cmake --build . --config Release
 ctest -C Release
 ```
