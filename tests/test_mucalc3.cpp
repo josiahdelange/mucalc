@@ -83,12 +83,17 @@ int main()
     };
 
     // Call SLICOT C interface wrapper
-    #if defined(_MSC_VER)
+    #if defined(_WIN32)
     mucalc1_(reinterpret_cast<_Dcomplex*>(Z.data()), n, m,
         nblock.data(), itype.data(), &mu_result, &info);
-    #else
+    #elif defined(__APPLE__)
     mucalc1_(reinterpret_cast<double _Complex*>(Z.data()), n, m,
         nblock.data(), itype.data(), &mu_result, &info);
+    #elif defined(__linux__)
+    mucalc1_(reinterpret_cast<double _Complex*>(Z.data()), n, m,
+        nblock.data(), itype.data(), &mu_result, &info);
+    #else
+    #error "Unknown or unsupported operating system"
     #endif
 
     // Check result

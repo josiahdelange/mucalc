@@ -37,7 +37,8 @@ int main()
     const int m = 5; // 5 uncertainty blocks
     const int nblock[5] = {1, 1, 2, 1, 1};
     const int itype[5] = {1, 1, 2, 2, 2};
-    #if defined(_MSC_VER)
+
+    #if defined(_WIN32)
     const _Dcomplex Z[6][6] = {
         {_Cbuild(-1.0,6.0),
         _Cbuild(4.0,2.0),
@@ -81,7 +82,7 @@ int main()
         _Cbuild(12.0,-1.0),
         _Cbuild(4.0,16.0)},
     };
-    #else
+    #elif defined(__APPLE__)
     const double _Complex Z[n][n] = {
         {CMPLX(-1.0,6.0),
         CMPLX(4.0,2.0),
@@ -125,6 +126,52 @@ int main()
         CMPLX(12.0,-1.0),
         CMPLX(4.0,16.0)},
     };
+    #elif defined(__linux__)
+    const double _Complex Z[n][n] = {
+        {CMPLX(-1.0,6.0),
+        CMPLX(4.0,2.0),
+        CMPLX(5.0,-4.0),
+        CMPLX(-1.0,6.0),
+        CMPLX(4.0,2.0),
+        CMPLX(5.0,-4.0)},
+
+        {CMPLX(2.0,-3.0),
+        CMPLX(-2.0,5.0),
+        CMPLX(-4.0,-8.0),
+        CMPLX(2.0,-3.0),
+        CMPLX(-2.0,5.0),
+        CMPLX(-4.0,-8.0)},
+
+        {CMPLX(3.0,8.0),
+        CMPLX(-6.0,-7.0),
+        CMPLX(1.0,-3.0),
+        CMPLX(3.0,8.0),
+        CMPLX(-6.0,-7.0),
+        CMPLX(1.0,-3.0)},
+
+        {CMPLX(3.0,8.0),
+        CMPLX(-4.0,11.0),
+        CMPLX(-6.0,14.0),
+        CMPLX(3.0,8.0),
+        CMPLX(-4.0,11.0),
+        CMPLX(-6.0,14.0)},
+
+        {CMPLX(-5.0,-9.0),
+        CMPLX(8.0,-7.0),
+        CMPLX(2.0,-5.0),
+        CMPLX(-5.0,-9.0),
+        CMPLX(8.0,-7.0),
+        CMPLX(2.0,-5.0)},
+
+        {CMPLX(-6.0,2.0),
+        CMPLX(12.0,-1.0),
+        CMPLX(4.0,16.0),
+        CMPLX(-6.0,2.0),
+        CMPLX(12.0,-1.0),
+        CMPLX(4.0,16.0)},
+    };
+    #else
+    #error "Unknown or unsupported operating system"
     #endif
 
     // Call SLICOT C interface wrapper

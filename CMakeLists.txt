@@ -82,7 +82,7 @@ message("-- Install directory: " ${CMAKE_INSTALL_PREFIX})
 
 # Compiler flags
 if(WIN32)
-    # Intel oneAPI (ifx)
+    # Microsoft Windows
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -nologo")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Qm64")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fpp")
@@ -91,10 +91,23 @@ if(WIN32)
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -libs:dll")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -threads")
 
-    # Microsoft Visual C++ (MSVC++)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
-else()
-    # GNU Compiler Collection (gcc, g++, gfortran)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_SILENCE_CXX17_C_HEADER_DEPRECATION_WARNING")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_SILENCE_CXX17_C_HEADER_DEPRECATION_WARNING")
+elseif(APPLE)
+    # Apple OS X
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -std=legacy")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -m64")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -finit-local-zero")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -O1") # -g for debug
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wno-line-truncation")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -cpp")
+    #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffpe-trap=invalid,zero,overflow")
+    #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall")
+    #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Werror")
+    #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fdefault-real-8")
+elseif(UNIX)
+    # Linux and other Unix-like OS
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -std=legacy")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -m64")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -finit-local-zero")
