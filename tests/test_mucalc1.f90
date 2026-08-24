@@ -83,7 +83,7 @@ program test_mucalc1
     if(abs(mu_result - mu_expected) < 1e-6) then
         write(*,*) 'Test passed!  mu_result = ', mu_result
     else
-        write(*,*) 'Test failed!  mu_result = ', mu_result
+        write(*,*) 'Test failed!  mu_result = ', mu_result, ", info = ", info
         stop 1
     end if
 end program test_mucalc1
