@@ -1,7 +1,7 @@
+#include "mucalc.h"
 #include <stdio.h>
 #include <math.h>
 #include <complex.h>
-#include "mucalc.h"
 
 int main()
 {
@@ -35,8 +35,53 @@ int main()
     const double mu_expected = 41.74753408;
     const int n = 6; // 6x6 matrix
     const int m = 5; // 5 uncertainty blocks
-    const int nblock[m] = {1, 1, 2, 1, 1};
-    const int itype[m] = {1, 1, 2, 2, 2};
+    const int nblock[5] = {1, 1, 2, 1, 1};
+    const int itype[5] = {1, 1, 2, 2, 2};
+    #if defined(_MSC_VER)
+    const _Dcomplex Z[6][6] = {
+        {_Cbuild(-1.0,6.0),
+        _Cbuild(4.0,2.0),
+        _Cbuild(5.0,-4.0),
+        _Cbuild(-1.0,6.0),
+        _Cbuild(4.0,2.0),
+        _Cbuild(5.0,-4.0)},
+
+        {_Cbuild(2.0,-3.0),
+        _Cbuild(-2.0,5.0),
+        _Cbuild(-4.0,-8.0),
+        _Cbuild(2.0,-3.0),
+        _Cbuild(-2.0,5.0),
+        _Cbuild(-4.0,-8.0)},
+
+        {_Cbuild(3.0,8.0),
+        _Cbuild(-6.0,-7.0),
+        _Cbuild(1.0,-3.0),
+        _Cbuild(3.0,8.0),
+        _Cbuild(-6.0,-7.0),
+        _Cbuild(1.0,-3.0)},
+
+        {_Cbuild(3.0,8.0),
+        _Cbuild(-4.0,11.0),
+        _Cbuild(-6.0,14.0),
+        _Cbuild(3.0,8.0),
+        _Cbuild(-4.0,11.0),
+        _Cbuild(-6.0,14.0)},
+
+        {_Cbuild(-5.0,-9.0),
+        _Cbuild(8.0,-7.0),
+        _Cbuild(2.0,-5.0),
+        _Cbuild(-5.0,-9.0),
+        _Cbuild(8.0,-7.0),
+        _Cbuild(2.0,-5.0)},
+
+        {_Cbuild(-6.0,2.0),
+        _Cbuild(12.0,-1.0),
+        _Cbuild(4.0,16.0),
+        _Cbuild(-6.0,2.0),
+        _Cbuild(12.0,-1.0),
+        _Cbuild(4.0,16.0)},
+    };
+    #else
     const double _Complex Z[n][n] = {
         {CMPLX(-1.0,6.0),
         CMPLX(4.0,2.0),
@@ -80,6 +125,7 @@ int main()
         CMPLX(12.0,-1.0),
         CMPLX(4.0,16.0)},
     };
+    #endif
 
     // Call SLICOT C interface wrapper
     mucalc1_(&Z[0][0], n, m, &nblock[0], &itype[0], &mu_result, &info);

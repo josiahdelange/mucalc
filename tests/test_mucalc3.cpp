@@ -1,7 +1,7 @@
+#include "mucalc.h"
 #include <iostream>
 #include <complex>
 #include <vector>
-#include "mucalc.h"
 
 int main()
 {
@@ -83,8 +83,13 @@ int main()
     };
 
     // Call SLICOT C interface wrapper
+    #if defined(_MSC_VER)
+    mucalc1_(reinterpret_cast<_Dcomplex*>(Z.data()), n, m,
+        nblock.data(), itype.data(), &mu_result, &info);
+    #else
     mucalc1_(reinterpret_cast<double _Complex*>(Z.data()), n, m,
         nblock.data(), itype.data(), &mu_result, &info);
+    #endif
 
     // Check result
     if(std::abs(mu_result - mu_expected) < 1e-6)
