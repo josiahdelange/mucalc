@@ -1,7 +1,6 @@
 #include "mucalc.h"
 #include <stdio.h>
 #include <math.h>
-#include <complex.h>
 
 int main()
 {
