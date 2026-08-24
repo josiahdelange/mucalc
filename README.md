@@ -11,7 +11,7 @@ cmake --build . --config Release
 ctest
 ```
 
-### Tested Configurations
+## Tested Configurations
 - Apple clang-1300.0.29.30 / cmake 3.31.12 / SLICOT 5.9.1 / OpenBLAS 0.3.34
 
 ## References
