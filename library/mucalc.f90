@@ -2,14 +2,14 @@ module mucalc
     implicit none
 
 contains
-    subroutine mucalc1(Z, n, m, nblock, itype, bound, info) bind(C, name="mucalc1_")
+    subroutine mucalc1(Z, n, m, nblock, itype, bound, info) bind(C, name = "mucalc1_")
         use, intrinsic :: iso_c_binding
 
-        complex(c_double_complex), intent(in) :: Z(:,:)
-        integer(c_int), intent(in) :: n
-        integer(c_int), intent(in) :: m
-        integer(c_int), intent(in) :: nblock(:)
-        integer(c_int), intent(in) :: itype(:)
+        complex(c_double_complex), intent(in) :: Z(n,n)
+        integer(c_int), intent(in), value :: n
+        integer(c_int), intent(in), value :: m
+        integer(c_int), intent(in) :: nblock(m)
+        integer(c_int), intent(in) :: itype(m)
         real(c_double), intent(out) :: bound
         integer(c_int), intent(out) :: info
 
@@ -33,6 +33,10 @@ contains
         write(*,*) "ldwork = ", ldwork
         write(*,*) "n = ", n
         write(*,*) "m = ", m
+
+        allocate(iwork(liwork), dwork(ldwork), zwork(lzwork))
+        allocate(X(2*m), D(n), G(n))
+
         write(*,*) "Z = "
         do ii = 1,n
             do jj = 1,n
@@ -40,8 +44,6 @@ contains
             end do
         end do
 
-        allocate(iwork(liwork), dwork(ldwork), zwork(lzwork))
-        allocate(X(2*m), D(n), G(n))
 
         ! Call SLICOT subroutine from Fortran-90 module
         write(*,*) "Calling AB13MD"
