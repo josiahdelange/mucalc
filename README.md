@@ -12,7 +12,7 @@ ctest
 ```
 
 ## Tested Configurations
-- Apple clang-1300.0.29.30 / cmake 3.31.12 / SLICOT 5.9.1 / OpenBLAS 0.3.34
+- Apple clang 13.0.0 / gfortran 11.2.0 / cmake 3.31.12 / SLICOT 5.9.1 / OpenBLAS 0.3.34
 
 ## References
 [1] Fan, M. K., Tits, A. L., & Doyle, J. C. (1988, June). Robustness in the Presence of Joint Parametric Uncertainty and Unmodeled Dynamics. In 1988 American Control Conference (pp. 1195-1200). IEEE.
