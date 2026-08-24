@@ -1,5 +1,5 @@
-# Structured Singular Value ($`\mu`$) calculation
-Wrapper interface to structured singular value (mu) calculation provided by [SLICOT](https://github.com/SLICOT/SLICOT-Reference), using modern Fortran and the ISO C Bindings module.  Computes $`\mu(Z)`$ where $`Z`$ is a complex $`(n x n)`$ matrix.
+# Structured Singular Value Calculation
+Wrapper interface to structured singular value ($`\mu`$) calculation provided by [SLICOT](https://github.com/SLICOT/SLICOT-Reference), using modern Fortran and the ISO C Bindings module.  Calls `AB13MD` to compute the upper bound of $`\mu_{\Delta}(Z)`$, where $`Z`$ is a complex $`(n \times n)`$ matrix and $`\Delta`$ is a block-structured uncertainty.
 
 ## Building and Installation
 The Fortran module wrapper `library/mucalc.f90` exports subroutine `mucalc1` (which calls SLICOT's `AB13MD`) to C as `mucalc1_`.  These are compiled into a single library using CMake.
