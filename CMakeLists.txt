@@ -101,7 +101,7 @@ else()
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -O1") # -g for debug
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wno-line-truncation")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -cpp")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffpe-trap=invalid,zero,overflow")
+    #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffpe-trap=invalid,zero,overflow")
     #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall")
     #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Werror")
     #set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fdefault-real-8")
