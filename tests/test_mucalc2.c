@@ -127,7 +127,7 @@ int main()
         CMPLX(4.0,16.0)},
     };
     #elif defined(__linux__)
-    const double _Complex Z[n][n] = {
+    const double _Complex Z[6][6] = {
         {CMPLX(-1.0,6.0),
         CMPLX(4.0,2.0),
         CMPLX(5.0,-4.0),
