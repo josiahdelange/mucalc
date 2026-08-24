@@ -1,5 +1,5 @@
 # Structured Singular Value Calculation
-Wrapper interface to structured singular value ($`\mu`$) calculation provided by [SLICOT](https://github.com/SLICOT/SLICOT-Reference), using modern Fortran and the ISO C Bindings module.  Calls `AB13MD` to compute the upper bound of $`\mu_{\Delta}(Z)`$, where $`Z`$ is a complex $`(n \times n)`$ matrix and $`\Delta`$ is a block-structured uncertainty.
+Wrapper interface to structured singular value ($`\mu`$) calculation provided by [SLICOT](https://github.com/SLICOT/SLICOT-Reference), using modern Fortran and the ISO C Bindings module.  Calls `AB13MD` to compute the upper bound of $`\mu_{\Delta}(Z)`$, where $`Z`$ is a complex $`(n \times n)`$ matrix and $`\Delta`$ is a block-structured uncertainty.  Basic unit tests reproduce the example problem in `TAB13MD` using modern Fortran, C and C++.
 
 ## Building and Installation
 ```
